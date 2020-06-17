@@ -1,9 +1,14 @@
+import os
 
 import logging
-let logger = newConsoleLogger(fmtStr = "[$date $time] - $levelname: ")
+let log = newConsoleLogger(fmtStr = "[$date $time] - $levelname: ")
 
 import core
 
 when isMainModule:
-  addHandler(logger)
-  logger.log(lvlInfo, core.init("metaL "))
+  addHandler(log)
+  log(lvlInfo, core.init())
+  var count = 0
+  for i in commandLineParams():
+    log(lvlInfo, "argv[" & $count & "]=" & i)
+    count += 1
