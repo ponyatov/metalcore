@@ -9,21 +9,26 @@ PRETTY	= $(HOME)/.nimble/bin/nimpretty
 
 
 
-.PHONY: all test
-
+.PHONY: all
 all: metaL metaL.ini
 	./$^
 
+.PHONY: test
 test:
-	$(NIMBLE) test
+	nimpretty --indent:2 tests/test1.nim 
+	nimble test
+
+.PHONY: docs
+docs:
+	cd $@ ; find ../src -type f -regex .+.nim$$ | xargs -n1 -P0 nim doc
 
 
 
 SRC = src/metaL.nim src/core.nim
 
 metaL: $(SRC) $(MODULE).nimble Makefile
-	ls src/*.nim | xargs -n1 $(PRETTY) --indent:2
-	$(NIMBLE) build
+	echo $(SRC) | xargs -n1 -P0 nimpretty --indent:2
+	nimble build
 
 
 
@@ -42,7 +47,7 @@ $(NIMBLE):
 
 .PHONY: master shadow release zip wiki
 
-MERGE  = Makefile README.md .gitignore .vscode apt.txt
+MERGE  = Makefile README.md .vscode apt.txt
 MERGE += src tests metaL.ini
 
 master:
