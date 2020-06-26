@@ -2,4 +2,14 @@
 *.swp
 *.log
 
+docs/
+
+*.pyc
+bin/
+include/
+lib/
+lib64
+pyvenv.cfg
+share/
+
 metaL

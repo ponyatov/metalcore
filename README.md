@@ -1,5 +1,5 @@
 #  metalcore
-## knowledge database engine in Nim lang
+## knowledge base engine in Nim lang
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> 2020 MIT
 
