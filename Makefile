@@ -17,8 +17,8 @@ NIM    = $(HOME)/.nimble/bin/nim
 all: metaL metaL.ini
 	./$^
 
-.PHONY: test
-test: docs
+.PHONY: tests
+tests: docs
 	nimpretty --indent:2 tests/test1.nim
 	nimble test
 
@@ -78,13 +78,15 @@ $(NIMBLE):
 
 .PHONY: master shadow release
 
-MERGE  = Makefile README.md .gitignore .vscode apt.txt requirements.txt
+MERGE  = Makefile README.md .gitignore .vscode/tasks.json apt.txt requirements.txt
 MERGE += metaL.py test_metaL.py metaL.ini
-MERGE += $(MODULE).nimble src tests docs
+MERGE += $(MODULE).nimble src tests
 
 master:
 	git checkout $@
+	git pull -v
 	git checkout shadow -- $(MERGE)
+	$(MAKE) tests
 
 shadow:
 	git checkout $@

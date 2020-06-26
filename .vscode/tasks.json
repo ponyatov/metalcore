@@ -1,0 +1,47 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build all",
+            "type": "shell",
+            "command": "make all tests",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "metaL/nim run",
+            "type": "shell",
+            "command": "make run"
+            "problemMatcher": []
+        },
+        {
+            "label": "metaL/nim tests",
+            "type": "shell",
+            "command": "make tests"
+            "problemMatcher": []
+        },
+        {
+            "label": "metaL/py run",
+            "type": "shell",
+            "command": "make py",
+            "problemMatcher": []
+        },
+        {
+            "label": "metaL/py tests",
+            "type": "shell",
+            "command": "make pyt"
+            "problemMatcher": []
+        },
+        {
+            "label": "docs",
+            "type": "shell",
+            "command": "make docs"
+            "problemMatcher": []
+        },
+    ]
+}
